@@ -1,7 +1,22 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.scrolling-wrapper {
+  overflow-x: auto;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.card-block {
+  height: 350px;
+  width: 500px;
+  background-color: #fff;
+  border: none;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.2s ease-in-out !important;
+  border-radius: 24px;
+}
+
+.jumbotron {
+  padding-left: 100px;
+}
+
+.heart {
+  margin-left: 100px;
+}

@@ -3,17 +3,18 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import Card from "./card.js";
 
-const Cardgroup = (props) => {
+const Planetgroup = (props) => {
 
 return(
-<div class="row row-cols-1 row-cols-md-2 g-4">
-<Card />
+<div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+<Card img=""/>
 <Card />
 <Card />
 <Card />
 <Card />
 <Card />
 </div>
+
 )
 };
-export default Cardgroup
+export default Planetgroup

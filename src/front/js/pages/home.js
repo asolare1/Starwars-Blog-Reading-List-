@@ -3,7 +3,8 @@ import { Context } from "../store/appContext";
 import Card from "../component/card.js";
 import Jumbotron from "../component/jumbotron.js";
 import "../../styles/home.css";
-import Cardgroup from "../component/cardgroup.js";
+import Peoplegroup from "../component/peoplegroup.js";
+import Planetgroup from "../component/planetgroup.js";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -11,8 +12,8 @@ export const Home = () => {
 
 	return (
 		<div>
-		<Jumbotron title="Character" cards={<Cardgroup />} />
-		<Jumbotron title="Planets" cards={<Cardgroup />} />
+		<Jumbotron title="Character" cards={<Peoplegroup />} />
+		<Jumbotron title="Planets" cards={<Planetgroup />} />
 		</div>
 	);
 };
