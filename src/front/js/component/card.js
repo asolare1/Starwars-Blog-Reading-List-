@@ -2,18 +2,18 @@ import React, { } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-const Card = (props) => (
+const Card = ({img, text, title, link, link_text}) => (
 	<div class="col-5 cardsize" >
 <div class="card-block card px-4">
-  <img src={props.img} class="card-img-top" alt="..."></img>
+  <img src={img ? img : "https://lumiere-a.akamaihd.net/v1/images/luke-skywalker-main_fb34a1ff.jpeg?region=131%2C0%2C951%2C536"} class="card-img-top" alt="..."></img>
     <div>
-        <h5 class="card-title">{props.name}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Learn more</a>
+        <h5 class="card-title">{title ? title : "Name" }</h5>
+    <p class="card-text">{text ? text:"Description"}</p>
+    <a href={link ? link:"/desc"} class="btn btn-primary">{link_text ? link_text:"Learn more!"}</a>
     <a href="#" class="btn btn-primary heart">♡</a>
   </div>
 </div>
 </div>
 
 );
-export default Card
+export {Card}
