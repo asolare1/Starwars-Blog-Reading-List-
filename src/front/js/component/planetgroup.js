@@ -17,12 +17,14 @@ const Planetgroup = (props) => {
     return(
         <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
         
-        {store.planets.map((planet) => {
+        {store.planets.map((planet, index) => {
         
         return <Card
-        
+            key={index}
+
             title={planet.name}
-            
+            link={"/planetdesc/" + index}
+            text={`${planet.name} is a planet with a rotational period of ${planet.rotation_period} and a diameter of ${planet.diameter}.`}
         
         />
     

@@ -4,6 +4,7 @@ import "../../styles/home.css";
 import {Card} from "./card.js";
 import { Planetgroup } from "./planetgroup";
 import { Link } from "react-router-dom";
+import { Desc } from "../pages/peopledesc.js";
 
 const Peoplegroup = (props) => {
 
@@ -18,10 +19,12 @@ const Peoplegroup = (props) => {
     return(
         <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
         
-        {store.people.map((people) => {
+        {store.people.map((people, index) => {
        
         return <Card
+            key={index}
             title={people.name}
+            link={"/peopledesc/" + index}
             text={`Gender: ${people.gender} Eye-color: ${people.eye_color} Hair-color: ${people.hair_color}`}
 
                 
