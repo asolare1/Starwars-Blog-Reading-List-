@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-export const Planetdesc = ({title, text}) => {
+export const Planetdesc = () => {
 	const { store, actions } = useContext(Context);
+  const params = useParams();
+  
+
+
 
 	return (
 		<div class="container">
@@ -16,14 +20,14 @@ export const Planetdesc = ({title, text}) => {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">{title}</p>
-        <p class="card-text">{text}</p>
+        <p class="card-text">{`${store.planets[params.theid].name} is a planet in the Star Wars universe`}</p>
+        <p class="card-text"></p>
       </div>
 	  </div>
     </div>
   </div>
   <div class="container">
-	Name:
+	Name: {store.planets[params.theid].name}   Climate: {store.planets[params.theid].climate}    Gravity: {store.planets[params.theid].gravity}    Terrain: {store.planets[params.theid].terrain}    
 	
  </div>
 </div>

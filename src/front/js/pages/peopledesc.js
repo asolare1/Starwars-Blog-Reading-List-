@@ -1,10 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-export const Peopledesc = ({title,text}) => {
+export const Peopledesc = () => {
 	const { store, actions } = useContext(Context);
+  const params = useParams();
+ 
+  useEffect(() => {
+
+    actions.getPeople()
+
+}, [])
+
 
 	return (
 		<div class="container">
@@ -16,14 +24,14 @@ export const Peopledesc = ({title,text}) => {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">{title}</p>
-        <p class="card-text">{text}</p>
+        <p class="card-text">{`${store.people[params.theid].name} is a person from the Star Wars universe`}</p>
+        <p class="card-text"></p>
       </div>
 	  </div>
     </div>
   </div>
   <div class="container">
-	Name: Birthyear: Gender: Height: Skin color: Eye color:
+	Name:   {store.people[params.theid].name} Birthyear:   {store.people[params.theid].birth_year} Gender:  {store.people[params.theid].gender} Height:   {store.people[params.theid].height}   Skin color: {store.people[params.theid].skin_color}   Eye color: {store.people[params.theid].eye_color}
 	
  </div>
 </div>

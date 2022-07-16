@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import {Card} from "./card.js";
+import { Link } from "react-router-dom";
 
 const Planetgroup = (props) => {
 
@@ -21,12 +22,17 @@ const Planetgroup = (props) => {
         
         return <Card
             key={index}
-
             title={planet.name}
-            link={"/planetdesc/" + index}
+            link={<Link 
+                to={"/planetdesc/" + index}>
+                <span class="btn btn-primary">Learn More!</span>
+                </Link>}
             text={`${planet.name} is a planet with a rotational period of ${planet.rotation_period} and a diameter of ${planet.diameter}.`}
-        
-        />
+            img="https://images.immediate.co.uk/production/volatile/sites/4/2018/08/eso0603a-b364432.jpg?quality=90&resize=700,466"
+            >
+                
+        </Card>
+    
     
         }) 
     }

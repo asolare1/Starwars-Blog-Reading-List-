@@ -9,7 +9,7 @@ const Card = ({img, text, title, link, link_text}) => (
     <div>
         <h5 class="card-title">{title ? title : "Name" }</h5>
     <p class="card-text">{text ? text:"Description"}</p>
-    <a href={link ? link:"/desc"} class="btn btn-primary">{link_text ? link_text:"Learn more!"}</a>
+    {link}
     <a href="#" class="btn btn-primary heart">♡</a>
   </div>
 </div>

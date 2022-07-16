@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			people : [],
+			people : [setStore],
 			planets : [] 
 		},
 		actions: {
@@ -34,7 +34,8 @@ const getState = ({ getStore, getActions, setStore }) => {
     })
     .then(data => {
         setStore({people : data.results}); 
-    })},
+    })
+},
 
 	getPlanets: () => {
 
@@ -50,6 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		})},
 
 
+		
 			getMessage: async () => {
 				try{
 					// fetching data from the backend

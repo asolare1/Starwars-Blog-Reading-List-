@@ -24,13 +24,16 @@ const Peoplegroup = (props) => {
         return <Card
             key={index}
             title={people.name}
-            link={"/peopledesc/" + index}
-            text={`Gender: ${people.gender} Eye-color: ${people.eye_color} Hair-color: ${people.hair_color}`}
-
-                
+            link={<Link 
+                to={"/peopledesc/" + index}>
+                <span class="btn btn-primary">Learn More!</span>
+                </Link>}
+            text={`Gender: ${people.gender} Eye-color: ${people.eye_color} Hair-color: ${people.hair_color}`}>
+        
+            </Card>
             
 
-        />
+       
     
         }) 
     }
@@ -38,4 +41,5 @@ const Peoplegroup = (props) => {
     
     )
 };
+
 export {Peoplegroup}
