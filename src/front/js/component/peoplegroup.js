@@ -28,7 +28,9 @@ const Peoplegroup = (props) => {
                 to={"/peopledesc/" + index}>
                 <span class="btn btn-primary">Learn More!</span>
                 </Link>}
-            text={`Gender: ${people.gender} Eye-color: ${people.eye_color} Hair-color: ${people.hair_color}`}>
+            text={`Gender: ${people.gender} Eye-color: ${people.eye_color} Hair-color: ${people.hair_color}`}
+            
+            >
         
             </Card>
             

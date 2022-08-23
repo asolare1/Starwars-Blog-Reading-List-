@@ -1,4 +1,5 @@
 import React from "react";
+import { Favorites } from "./favorites.js";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -10,7 +11,7 @@ export const Navbar = () => {
 				</Link>
 				<div className="ml-auto">
 					<Link to="/">
-						<button className="btn btn-primary">Favorites</button>
+						<button className="btn btn-primary">Favorites<Favorites/></button>
 					</Link>
 				</div>
 			</div>
