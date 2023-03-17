@@ -29,6 +29,7 @@ const Planetgroup = (props) => {
                 </Link>}
             text={`${planet.name} is a planet with a rotational period of ${planet.rotation_period} and a diameter of ${planet.diameter}.`}
             img="https://images.immediate.co.uk/production/volatile/sites/4/2018/08/eso0603a-b364432.jpg?quality=90&resize=700,466"
+            button={<button>Add to favorites</button>}
             >
                 
         </Card>

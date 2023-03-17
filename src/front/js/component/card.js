@@ -11,7 +11,7 @@ const Card = ({img, text, title, link, link_text, button}) => (
     <div>
         <h5 class="card-title">{title ? title : "Name" }</h5>
     <p class="card-text">{text ? text:"Description"}</p>
-    {link}
+    {link}{button}
   </div>
 </div>
 </div>

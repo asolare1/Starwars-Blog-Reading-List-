@@ -29,7 +29,7 @@ const Peoplegroup = (props) => {
                 <span class="btn btn-primary">Learn More!</span>
                 </Link>}
             text={`Gender: ${people.gender} Eye-color: ${people.eye_color} Hair-color: ${people.hair_color}`}
-            
+            button={<button>Add to favorites</button>}
             >
         
             </Card>
