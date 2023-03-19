@@ -1,26 +1,33 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			people : [setStore],
+			favorites : [],
+			people : [],
 			planets : [] 
 		},
 		actions: {
+			
+			
+			addFavorites: (data) => {
+				
+
+				
+				const store = getStore()
+				setStore({favorites:[...store.favorites, data]})
+
+
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+
+			removeFavorites: (data) => {
+				console.log(data);
+				const store = getStore();
+				const removeName = store.favorites.filter(name => name !== data);
+				setStore({ favorites: removeName });
+				console.log(store.favorites);
 			},
 
 			getPeople: () => {

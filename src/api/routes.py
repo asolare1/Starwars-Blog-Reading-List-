@@ -53,7 +53,7 @@ def handle_planet():
     return jsonify(planets = store_planet)
 
 @api.route('/planets/<int:id>', methods=['GET'])
-def getsingleuser(id):  
+def getsingleplanet(id):  
     store_planet = Planet.query.filter_by(id=id).first()
 
     return jsonify(planet = store_planet.serialize())
