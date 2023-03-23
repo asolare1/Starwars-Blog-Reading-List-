@@ -85,7 +85,7 @@ def add_new_favorite():
 
 @api.route('/favorites/<int:position>', methods=['DELETE'])
 def delete_favorite(position):
-    del favorites[2]
+    del favorites[position]
     print("This is the position to delete: ",position)
 
     return jsonify(favorites)
