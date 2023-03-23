@@ -2,20 +2,12 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, People, Planets, Favorites
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
-
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
-
-    return jsonify(response_body), 200
 
 @api.route('/users', methods=['GET'])
 def handle_user():  
@@ -32,28 +24,68 @@ def getsingleuser(id):
     return jsonify(user = store_user.serialize())
 
 
-@api.route('/people', methods=['GET'])
-def handle_people():  
-    store_people = People.query.all()
-    store_people = [people.serialize() for people in store_people]
+@api.route('/hello', methods=['POST', 'GET'])
+def handle_hello():
 
-    return jsonify(people = store_people)
+    response_body = {
+        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+    }
+
+    return jsonify(response_body), 200
+
+
+
+@api.route('/people', methods=['GET'])
+def get_people():
+    people = People.query.all()
+    if people is None:
+        return jsonify(msg="This page does not exist."), 400
+    else:
+        return jsonify(
+        data=[person.serialize() for person in people]), 200
 
 @api.route('/people/<int:id>', methods=['GET'])
-def getsinglepeople(id):  
-    store_people = People.query.filter_by(id=id).first()
-
-    return jsonify(people = store_people.serialize())
+def get_person(id):
+    person = People.query.filter(
+        People.id == id
+    ).one_or_none()
+    if person is None:
+        return jsonify(msg="This person does not exist."), 400
+    else:
+        return jsonify(
+        data=person.serialize()
+        ), 200
 
 @api.route('/planets', methods=['GET'])
 def handle_planet():  
-    store_planet = Planet.query.all()
-    store_planet = [planet.serialize() for planet in store_planet]
+    store_planets = Planets.query.all()
+    store_planets = [planets.serialize() for planets in store_planets]
 
-    return jsonify(planets = store_planet)
+    return jsonify(planets = store_planets)
 
 @api.route('/planets/<int:id>', methods=['GET'])
 def getsingleplanet(id):  
-    store_planet = Planet.query.filter_by(id=id).first()
+    store_planets = Planets.query.filter_by(id=id).first()
 
-    return jsonify(planet = store_planet.serialize())
+    return jsonify(planets = store_planets.serialize())
+
+@api.route('/favorites', methods=['GET'])
+def handle_favorites():  
+    store_favorites = Favorites.query.all()
+    store_favorites = [favorites.serialize() for favorites in store_favorites]
+
+    return jsonify(favorites = store_favorites)
+
+@api.route('/favorites', methods=['POST'])
+def add_new_favorite():
+    request_body = request.get_json(force=True)
+    favorites = request_body
+   
+    return jsonify(favorites)
+
+@api.route('/favorites/<int:position>', methods=['DELETE'])
+def delete_favorite(position):
+    del favorites[2]
+    print("This is the position to delete: ",position)
+
+    return jsonify(favorites)
