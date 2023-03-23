@@ -69,22 +69,41 @@ def getsingleplanet(id):
 
     return jsonify(planets = store_planets.serialize())
 
-@api.route('/favorites', methods=['GET'])
+@api.route('users/favorites', methods=['GET'])
 def handle_favorites():  
     store_favorites = Favorites.query.all()
     store_favorites = [favorites.serialize() for favorites in store_favorites]
 
     return jsonify(favorites = store_favorites)
 
-@api.route('/favorites', methods=['POST'])
-def add_new_favorite():
+@api.route('/favorites/planet/<int:planet_id>', methods=['POST'])
+def add_new_favoriteplanet():
+    favoriteplanet = Favorites.query.filter(
+        Planets.id == id
+    ).one_or_none()
+    if person is None:
+        return jsonify(msg="This person does not exist."), 400
+    else:
+        return jsonify(
+        data=person.serialize()
+        ), 200
+
+@api.route('/favorites/people/<int:people_id>', methods=['POST'])
+def add_new_favoritepeople():
     request_body = request.get_json(force=True)
     favorites = request_body
    
     return jsonify(favorites)
 
-@api.route('/favorites/<int:position>', methods=['DELETE'])
-def delete_favorite(position):
+@api.route('/favorites/planets/<int:position>', methods=['DELETE'])
+def delete_favoriteplanet(position):
+    del favorites[position]
+    print("This is the position to delete: ",position)
+
+    return jsonify(favorites)
+
+@api.route('/favorites/people/<int:position>', methods=['DELETE'])
+def delete_favoritepeople(position):
     del favorites[position]
     print("This is the position to delete: ",position)
 
